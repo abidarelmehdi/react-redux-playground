@@ -4,9 +4,8 @@ import slugify from "slugify";
 import CourseForm from "../courses/CourseForm";
 import * as courseActions from "../../redux/actions/courseActions";
 import * as authorActions from "../../redux/actions/authorActions";
-import { bindActionCreators } from "redux";
 
-function CourseManagePage({ authors, actions }) {
+function CourseManagePage(props) {
   const [course, setCourse] = useState({
     id: null,
     title: "",
@@ -16,8 +15,10 @@ function CourseManagePage({ authors, actions }) {
   });
 
   useEffect(() => {
-    authors.length === 0 && actions.loadAuthors();
-  }, [authors, actions]);
+    props.authors.length === 0 && props.loadAuthors();
+    props.courses.length === 0 && props.loadCourses();
+    props.selectedCourse && setCourse(props.selectedCourse);
+  }, [props]);
 
   const handleChange = ({ target }) => {
     setCourse({
@@ -29,31 +30,33 @@ function CourseManagePage({ authors, actions }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    actions.saveCourse(course);
-    // courseActions.saveCourse(course).then(() => props.history.push("/courses"));
+    props.saveCourse(course).then(props.history.push("/courses"));
   }
+
   return (
     <CourseForm
       course={course}
-      authors={authors}
+      authors={props.authors}
       onSubmit={handleSubmit}
       onChange={handleChange}
     />
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const slug = ownProps.match.params.slug;
+  const selectedCourse =
+    state.courses.find((course) => course.slug === slug) || null;
   return {
+    selectedCourse,
+    courses: state.courses,
     authors: state.authors,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: {
-      saveCourse: bindActionCreators(courseActions.saveCourse, dispatch),
-      loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch),
-    },
-  };
+const mapDispatchToProps = {
+  saveCourse: courseActions.saveCourse,
+  loadAuthors: authorActions.loadAuthors,
+  loadCourses: courseActions.loadCourses,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CourseManagePage);

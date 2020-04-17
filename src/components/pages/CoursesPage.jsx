@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as courseActions from "../../redux/actions/courseActions";
 import * as authorActions from "../../redux/actions/authorActions";
+import { StageSpinner } from "react-spinners-kit";
 
 class CoursesPage extends Component {
   componentDidMount() {
@@ -12,13 +13,20 @@ class CoursesPage extends Component {
     courses.length === 0 && actions.loadCourses();
     authors.length === 0 && actions.loadAuthors();
   }
+
   render() {
     return (
       <>
         <div className="absolute top-0 right-0 -mt-14">
           <AddCourseBtn />
         </div>
-        <CoursesList courses={this.props.courses} />
+        {this.props.loading ? (
+          <div className="flex items-center justify-center p-16">
+            <StageSpinner size={60} color="#252f3f" />
+          </div>
+        ) : (
+          <CoursesList courses={this.props.courses} />
+        )}
       </>
     );
   }
@@ -26,6 +34,7 @@ class CoursesPage extends Component {
 
 function mapStateToProps(state) {
   return {
+    loading: state.apiStatus > 0,
     authors: state.authors,
     courses:
       state.authors.length === 0
