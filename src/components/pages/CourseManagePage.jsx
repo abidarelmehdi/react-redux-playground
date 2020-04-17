@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import slugify from "slugify";
+import { StageSpinner } from "react-spinners-kit";
 import CourseForm from "../courses/CourseForm";
 import * as courseActions from "../../redux/actions/courseActions";
 import * as authorActions from "../../redux/actions/authorActions";
@@ -13,6 +14,7 @@ function CourseManagePage(props) {
     category: "",
     authorId: undefined,
   });
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     props.authors.length === 0 && props.loadAuthors();
@@ -30,12 +32,19 @@ function CourseManagePage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.saveCourse(course).then(props.history.push("/courses"));
+    setSaving(true);
+    props.saveCourse(course).then(() => props.history.push("/courses"));
   }
 
-  return (
+  const loading = props.courses.length === 0 || props.authors.length === 0;
+  return loading ? (
+    <div className="flex items-center justify-center p-16">
+      <StageSpinner size={60} color="#252f3f" />
+    </div>
+  ) : (
     <CourseForm
       course={course}
+      saving={saving}
       authors={props.authors}
       onSubmit={handleSubmit}
       onChange={handleChange}

@@ -1,9 +1,16 @@
 import React from "react";
+import { StageSpinner } from "react-spinners-kit";
 import TextInput from "../core/Forms/TextInput";
 import ListInput from "../core/Forms/ListInput";
 import SubmitBtn from "../core/Forms/SubmitBtn";
 
-export default function CourseForm({ course, authors, onChange, onSubmit }) {
+export default function CourseForm({
+  course,
+  authors,
+  onChange,
+  onSubmit,
+  saving,
+}) {
   return (
     <form onSubmit={onSubmit} className="py-6 px-4 sm:px-6 lg:px-8">
       <div>
@@ -46,7 +53,11 @@ export default function CourseForm({ course, authors, onChange, onSubmit }) {
           />
         </div>
         <div className="mt-6 sm:mt-5 flex justify-end sm:border-t sm:border-gray-200 sm:pt-5">
-          <SubmitBtn label="submit" />
+          {saving ? (
+            <StageSpinner size={40} color="#252f3f" />
+          ) : (
+            <SubmitBtn label="submit" />
+          )}
         </div>
       </div>
     </form>
