@@ -3,10 +3,9 @@ import TextInput from "../core/Forms/TextInput";
 import ListInput from "../core/Forms/ListInput";
 import SubmitBtn from "../core/Forms/SubmitBtn";
 
-export default function CourseForm(props) {
-  const authors = [];
+export default function CourseForm({ course, authors, onChange, onSubmit }) {
   return (
-    <form onSubmit={props.onSubmit} className="py-6 px-4 sm:px-6 lg:px-8">
+    <form onSubmit={onSubmit} className="py-6 px-4 sm:px-6 lg:px-8">
       <div>
         <h3 className="text-2xl leading-6 font-medium text-gray-900">
           Course Form
@@ -21,8 +20,8 @@ export default function CourseForm(props) {
             id="title"
             label="Title"
             name="title"
-            value={props.course.title}
-            onChange={props.onChange}
+            value={course.title}
+            onChange={onChange}
           />
         </div>
 
@@ -31,8 +30,8 @@ export default function CourseForm(props) {
             label="Category"
             id="category"
             name="category"
-            value={props.course.category}
-            onChange={props.onChange}
+            value={course.category}
+            onChange={onChange}
           />
         </div>
 
@@ -41,9 +40,9 @@ export default function CourseForm(props) {
             id="authorId"
             label="Author"
             name="authorId"
-            value={props.course.authorId}
+            value={course.authorId}
             objectList={authors}
-            onChange={props.onChange}
+            onChange={onChange}
           />
         </div>
         <div className="mt-6 sm:mt-5 flex justify-end sm:border-t sm:border-gray-200 sm:pt-5">
