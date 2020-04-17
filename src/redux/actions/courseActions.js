@@ -12,7 +12,7 @@ export function saveCourse(course) {
 
 export function loadCoursesSuccess(courses) {
   return {
-    type: actionTypes.LOAD_COUSES_SUCCESS,
+    type: actionTypes.LOAD_COURSES_SUCCESS,
     courses,
   };
 }

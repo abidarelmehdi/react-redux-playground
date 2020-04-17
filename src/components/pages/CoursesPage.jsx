@@ -4,12 +4,13 @@ import AddCourseBtn from "../courses/AddCourseBtn";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as courseActions from "../../redux/actions/courseActions";
+import * as authorActions from "../../redux/actions/authorActions";
 
 class CoursesPage extends Component {
   componentDidMount() {
-    this.props.actions.loadCourses() /* .then((error) => {
-      throw error;
-    }) */;
+    const { courses, authors, actions } = this.props;
+    courses.length === 0 && actions.loadCourses();
+    authors.length === 0 && actions.loadAuthors();
   }
   render() {
     return (
@@ -25,13 +26,27 @@ class CoursesPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    courses: state.courses,
+    authors: state.authors,
+    courses:
+      state.authors.length === 0
+        ? []
+        : state.courses.map((course) => {
+            return {
+              ...course,
+              authorName: state.authors.find(
+                (author) => author.id === course.authorId
+              ).name,
+            };
+          }),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(courseActions, dispatch),
+    actions: {
+      loadCourses: bindActionCreators(courseActions.loadCourses, dispatch),
+      loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch),
+    },
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);

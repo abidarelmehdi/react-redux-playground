@@ -4,7 +4,7 @@ export default function courseReducers(state = [], action) {
   switch (action.type) {
     case actionTypes.SAVE_COURSE:
       return [...state, { ...action.course }];
-    case actionTypes.LOAD_COUSES_SUCCESS:
+    case actionTypes.LOAD_COURSES_SUCCESS:
       return action.courses;
 
     default:
