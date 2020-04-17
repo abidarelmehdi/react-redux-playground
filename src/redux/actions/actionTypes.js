@@ -1,0 +1,4 @@
+export default {
+  SAVE_COURSE: "SAVE_COURSE",
+  LOAD_COUSES_SUCCESS: "LOAD_COUSES_SUCCESS",
+};

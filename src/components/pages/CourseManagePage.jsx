@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import slugify from "slugify";
 import CourseForm from "../courses/CourseForm";
+import * as courseActions from "../../redux/actions/courseActions";
 
-export default function CourseManagePage(props) {
+function CourseManagePage(props) {
   const [course, setCourse] = useState({
     id: null,
     title: "",
@@ -21,6 +23,7 @@ export default function CourseManagePage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    props.dispatch(courseActions.saveCourse(course));
     // courseActions.saveCourse(course).then(() => props.history.push("/courses"));
   }
   return (
@@ -31,3 +34,5 @@ export default function CourseManagePage(props) {
     />
   );
 }
+
+export default connect()(CourseManagePage);

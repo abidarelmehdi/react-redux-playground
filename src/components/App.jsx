@@ -1,10 +1,10 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import Header from "./core/Header";
 import HomePage from "./pages/HomePage";
 import CoursesPage from "./pages/CoursesPage";
 import AboutPage from "./pages/AboutPage";
 import CourseManagePage from "./pages/CourseManagePage";
-import { Route } from "react-router-dom";
 
 export default function App() {
   return (
