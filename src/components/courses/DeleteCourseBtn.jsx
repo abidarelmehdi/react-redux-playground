@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import { StageSpinner } from "react-spinners-kit";
 import { connect } from "react-redux";
+import SuccessToast from "../core/SuccessToast";
 import { deleteCourse } from "../../redux/actions/courseActions";
 
 function DeleteCourseBtn({ deleteCourse, course }) {
@@ -16,9 +18,11 @@ function DeleteCourseBtn({ deleteCourse, course }) {
 
   function handleClick() {
     setDeleting(true);
-    deleteCourse(course).finally(() => {
-      isMounted.current && setDeleting(false);
-    });
+    deleteCourse(course)
+      .then(() => toast(<SuccessToast message="Course deleted successfully" />))
+      .finally(() => {
+        isMounted.current && setDeleting(false);
+      });
     return;
   }
   return deleting ? (

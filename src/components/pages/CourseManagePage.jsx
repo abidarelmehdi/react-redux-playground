@@ -36,7 +36,7 @@ function CourseManagePage(props) {
     event.preventDefault();
     setSaving(true);
     props.saveCourse(course).then(() => {
-      toast(<SuccessToast />);
+      toast(<SuccessToast message="Course saved successfully" />);
       props.history.push("/courses");
     });
   }

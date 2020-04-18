@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SuccessToast() {
+export default function SuccessToast({ message = "", messageDetail = "" }) {
   return (
     <div className="flex items-start">
       <div className="flex-shrink-0">
@@ -19,12 +19,8 @@ export default function SuccessToast() {
         </svg>
       </div>
       <div className="ml-3 w-0 flex-1 pt-0.5">
-        <p className="text-sm leading-5 font-medium text-gray-900">
-          Successfully saved!
-        </p>
-        <p className="mt-1 text-sm leading-5 text-gray-500">
-          Anyone with a link can now view this file.
-        </p>
+        <p className="text-sm leading-5 font-medium text-gray-900">{message}</p>
+        <p className="mt-1 text-sm leading-5 text-gray-500">{messageDetail}</p>
       </div>
       <div className="ml-4 flex-shrink-0 flex">
         <button className="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150">
