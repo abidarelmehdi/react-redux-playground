@@ -20,6 +20,12 @@ export function createCourseSuccess(course) {
     course,
   };
 }
+export function deleteCourseSuccess(course) {
+  return {
+    type: actionTypes.DELETE_COURSE_SUCCESS,
+    course,
+  };
+}
 export function updateCourseSuccess(course) {
   return {
     type: actionTypes.UPDATE_COURSE_SUCCESS,
@@ -61,6 +67,20 @@ export function saveCourse(course) {
         course.id
           ? dispatch(updateCourseSuccess(savedCourse))
           : dispatch(createCourseSuccess(savedCourse));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+}
+
+export function deleteCourse(course) {
+  return function (dispatch) {
+    // dispatch(startApiCall());
+    return courseApi
+      .deleteCourse(course.id)
+      .then(() => {
+        dispatch(deleteCourseSuccess(course));
       })
       .catch((error) => {
         throw error;

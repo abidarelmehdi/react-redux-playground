@@ -13,7 +13,6 @@ class CoursesPage extends Component {
     courses.length === 0 && actions.loadCourses();
     authors.length === 0 && actions.loadAuthors();
   }
-
   render() {
     return (
       <>

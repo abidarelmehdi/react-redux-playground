@@ -16,6 +16,9 @@ export default function courseReducers(state = [], action) {
         course.id === action.course.id ? action.course : course
       );
 
+    case actionTypes.DELETE_COURSE_SUCCESS:
+      return state.filter((course) => course.id !== action.course.id);
+
     default:
       return state;
   }
