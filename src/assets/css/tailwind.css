@@ -2,4 +2,11 @@
 
 @tailwind components;
 
+.toast-container {
+  @apply max-w-sm w-full !important;
+}
+
+.toast {
+  @apply rounded-lg !important;
+}
 @tailwind utilities;

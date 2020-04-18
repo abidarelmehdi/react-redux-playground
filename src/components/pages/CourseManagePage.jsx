@@ -5,6 +5,8 @@ import { StageSpinner } from "react-spinners-kit";
 import CourseForm from "../courses/CourseForm";
 import * as courseActions from "../../redux/actions/courseActions";
 import * as authorActions from "../../redux/actions/authorActions";
+import { toast } from "react-toastify";
+import SuccessToast from "../core/SuccessToast";
 
 function CourseManagePage(props) {
   const [course, setCourse] = useState({
@@ -33,7 +35,10 @@ function CourseManagePage(props) {
   function handleSubmit(event) {
     event.preventDefault();
     setSaving(true);
-    props.saveCourse(course).then(() => props.history.push("/courses"));
+    props.saveCourse(course).then(() => {
+      toast(<SuccessToast />);
+      props.history.push("/courses");
+    });
   }
 
   const loading = props.courses.length === 0 || props.authors.length === 0;

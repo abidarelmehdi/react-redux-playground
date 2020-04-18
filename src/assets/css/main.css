@@ -827,6 +827,15 @@ video {
   border-color: transparent;
 }
 
+.toast-container {
+  max-width: 24rem !important;
+  width: 100% !important;
+}
+
+.toast {
+  border-radius: 0.5rem !important;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
