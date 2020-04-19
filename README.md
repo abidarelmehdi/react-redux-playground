@@ -1,6 +1,6 @@
 ## React Redux Playground - 05
 
-Hands on experience with React, Redux, TailwindCSS and Tests with Jest and Enzyme by building a simple course administration app.
+Hands on experience with React, Redux, and TailwindCSS, Tested with Jest and Enzyme, Served with NodeJS Express by building a simple course administration app.
 
 ### `npm start`
 
