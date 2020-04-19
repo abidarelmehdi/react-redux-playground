@@ -6,7 +6,7 @@ import * as authorActions from "../../redux/actions/authorActions";
 import { toast } from "react-toastify";
 import SuccessToast from "../core/SuccessToast";
 
-function CourseManagePage(props) {
+export function AuthorManagePage(props) {
   const [author, setAuthor] = useState({
     id: null,
     name: "",
@@ -63,4 +63,4 @@ const mapDispatchToProps = {
   saveAuthor: authorActions.saveAuthor,
   loadAuthors: authorActions.loadAuthors,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(CourseManagePage);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorManagePage);

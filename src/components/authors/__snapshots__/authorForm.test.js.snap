@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`replace save button with saving state when form is saving 1`] = `
+<form
+  className="py-6 px-4 sm:px-6 lg:px-8"
+  onSubmit={[MockFunction]}
+>
+  <div>
+    <h3
+      className="text-2xl leading-6 font-medium text-gray-900"
+    >
+      Author Form
+    </h3>
+    <p
+      className="mt-1 max-w-2xl text-sm leading-5 text-gray-500"
+    >
+      Update and create new author.
+    </p>
+  </div>
+  <div
+    className="mt-6 sm:mt-5"
+  >
+    <div
+      className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
+    >
+      <label
+        className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <div
+        className="mt-1 sm:mt-0 col-span-2"
+      >
+        <div
+          className="w-full rounded-md shadow-sm"
+        >
+          <input
+            className="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            id="name"
+            name="name"
+            onChange={[MockFunction]}
+            type="text"
+            value="Cory House"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="mt-6 sm:mt-5 flex justify-end sm:border-t sm:border-gray-200 sm:pt-5"
+    >
+      <div
+        className="stage__Wrapper-sc-161krao-0 iPJbLy"
+        size={40}
+      >
+        <div
+          className="stage__Ball-sc-161krao-1 VHhMl"
+          color="#252f3f"
+          size={40}
+          x={0}
+          y={16}
+        />
+        <div
+          className="stage__Ball-sc-161krao-1 dEEzDQ"
+          color="#252f3f"
+          size={40}
+          x={16}
+          y={16}
+        />
+        <div
+          className="stage__Ball-sc-161krao-1 jbVSnv"
+          color="#252f3f"
+          size={40}
+          x={32}
+          y={16}
+        />
+      </div>
+    </div>
+  </div>
+</form>
+`;
