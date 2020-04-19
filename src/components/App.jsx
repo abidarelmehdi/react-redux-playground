@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import CoursesPage from "./pages/CoursesPage";
 import AboutPage from "./pages/AboutPage";
 import CourseManagePage from "./pages/CourseManagePage";
+import AuthorPage from "./pages/AuthorPage";
+import AuthorManagePage from "./pages/AuthorManagePage";
 export default function App() {
   return (
     <>
@@ -18,6 +20,9 @@ export default function App() {
               <Route exact path="/courses" component={CoursesPage} />
               <Route exact path="/course/:slug" component={CourseManagePage} />
               <Route exact path="/course" component={CourseManagePage} />
+              <Route exact path="/authors" component={AuthorPage} />
+              <Route exact path="/author/:name" component={AuthorManagePage} />
+              <Route exact path="/author" component={AuthorManagePage} />
               <Route exact path="/about" component={AboutPage} />
             </Switch>
           </div>

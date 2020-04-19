@@ -37,6 +37,13 @@ export default function NavBar() {
                 Courses
               </NavLink>
               <NavLink
+                to="/authors"
+                className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                activeClassName="bg-cool-gray-600"
+              >
+                Authors
+              </NavLink>
+              <NavLink
                 to="/about"
                 className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 activeClassName="bg-cool-gray-600"
